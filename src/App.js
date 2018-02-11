@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import logo from "./logo.svg";
-import "./App.css";
+import "./App.scss";
 import Carrousel from "./components/Carrousel/Carrousel";
 
 class App extends Component {
