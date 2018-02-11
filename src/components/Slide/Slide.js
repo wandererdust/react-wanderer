@@ -1,8 +1,13 @@
+import React from 'react';
+import './Slide.scss';
+
 function Slide({ data }) {
+    const colorStyle = { backgroundColor: data.color };
     return (
-        <article>
-            <h1>Im a slide</h1>
-            <div>{data}</div>
+        <article className="slide" style={colorStyle}>
+            <h1>{data.name}</h1>
         </article>
     );
 }
+
+export default Slide;

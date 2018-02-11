@@ -1,0 +1,19 @@
+body {
+    background-color: lightgreen;
+
+    align-items: stretch;
+    bottom: 0;
+    display: flex;
+    height: 100vh;
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+}
+
+#root {
+    background-color: lightblue;
+
+    flex: 1;
+    position: relative;
+}

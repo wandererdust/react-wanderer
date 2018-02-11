@@ -1,14 +1,15 @@
 import React from "react";
 import "./Carrousel.scss";
 import slidesData from "../../slidersData";
+import Slide from "../Slide/Slide";
 
 class Carrousel extends React.Component {
-
+    slides = slidesData;
     render() {
+        const withStyle = { width: 100 * this.slides.length + "vw" };
         return (
-            <main className="carrousel">
-                <h1>Hello I'm a Carrousel</h1>
-                {slidesData.map(slide => <p>{slide.name}</p>)}
+            <main className="carrousel" style={withStyle}>
+                {this.slides.map(data => <Slide data={data} />)}
             </main>
         );
     }
