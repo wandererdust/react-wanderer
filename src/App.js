@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import logo from "./logo.svg";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 import "./App.scss";
 import Carrousel from "./components/Carrousel/Carrousel";
 import slidesData from "./slidesData";
@@ -13,7 +13,7 @@ class App extends Component {
                 {slidesData.map(slide => (
                     <Route path={slide.path} component={Carrousel} />
                 ))}
-                <Route component={Carrousel} />
+                <Redirect to={ slidesData[0].path }/>
             </Switch>
         );
     }

@@ -1,27 +1,43 @@
 import React from "react";
 import "./Carrousel.scss";
-import slidesData from "../../slidesData";
 import Slide from "../Slide/Slide";
+import slidesHelper from "../../data/slides/helper";
 
 class Carrousel extends React.Component {
-    slides = slidesData;
+    get path() {
+        return this.props.location.pathname;
+    }
 
-    getStepFromPath() {
-        return slidesData.findIndex(
-            slide => slide.path === this.props.location.pathname
-        );
+    handlePrevStep = () => {
+        const prevPath = slidesHelper.getPreviousPath(this.path);
+        this.goTo(prevPath);
+    }
+
+    handleNextStep = () => {
+        const nextPath = slidesHelper.getNextPath(this.path);
+        this.goTo(nextPath);
+    }
+
+    goTo(path) {
+        this.props.history.push(path);
     }
 
     render() {
-        const l = this.slides.length;
-        const s = this.getStepFromPath();
+        const l = slidesHelper.slides.length;
+        const s = slidesHelper.getStepFromPath(this.path);
         const style = {
             width: `${l}00vw`,
             left: `-${s}00vw`
         };
         return (
             <main className="carrousel" style={style}>
-                {this.slides.map(data => <Slide data={data} />)}
+                {slidesHelper.slides.map(data => (
+                    <Slide
+                        data={data}
+                        next={this.handleNextStep}
+                        prev={this.handlePrevStep}
+                    />
+                ))}
             </main>
         );
     }
