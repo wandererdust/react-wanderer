@@ -1,9 +1,39 @@
+@import '../../../node_modules/bootstrap/scss/variables';
+@import '../../../node_modules/bootstrap/scss/mixins/breakpoints';
+
 .carrousel {
     background-color: tomato;
+
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url("../../img/planet_h_576.jpg");
+    @media (orientation: portrait) {
+        background-image: url("../../img/planet_v_320.jpg");
+    }
+    @media (min-width: 320px) and (orientation: portrait) {
+        background-image: url("../../img/planet_v_576.jpg");
+    }
+    @include media-breakpoint-up(sm) {
+        background-image: url("../../img/planet_h_768.jpg");
+        @media (orientation: portrait) {
+            background-image: url("../../img/planet_v_768.jpg");
+        }
+    }
+    @include media-breakpoint-up(md) {
+        background-image: url("../../img/planet_h_992.jpg");
+    }
+    @include media-breakpoint-up(lg) {
+        background-image: url("../../img/planet_h_1200.jpg");
+    }
+    @include media-breakpoint-up(xl) {
+        background-image: url("../../img/planet_h_1500.jpg");
+    }
+    @media (min-width: 1500px) {
+        background-image: url("../../img/planet_h_1900.jpg");
+    }
 
     display: flex;
     height: 100vh;
     position: absolute;
     top: 0;
-    transition: left 500ms cubic-bezier(0.4, 0, 0, 1);
 }
