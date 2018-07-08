@@ -1,0 +1,35 @@
+.carousel {
+  position: absolute;
+  width: 400vw;
+  height: 100vh;
+  display: flex;
+  transition-property: left;
+  transition-duration: 600ms;
+  transition-timing-function: ease-out;
+}
+
+.s1 {
+  left: 0;
+}
+.s2 {
+  left: -100vw;
+}
+.s3 {
+  left: -200vw;
+}
+.s4 {
+  left: -300vw;
+}
+
+.prev,
+.next {
+  position: fixed;
+  top: 50%;
+}
+
+.prev {
+  left: 0;
+}
+.next {
+  right: 0;
+}
