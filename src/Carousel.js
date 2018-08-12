@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router";
 import { Link } from "react-router-dom";
-import "./Carousel.css";
+import "./Carousel.scss";
 import Slide from "./Slide";
 import model from "./Model";
 import Hammer from "react-hammerjs";
@@ -40,7 +40,8 @@ class Carousel extends Component {
     return {
       left: this.state.panOffset
         ? `${this.initialOffset + this.state.panOffset}px`
-        : `-${this.slideIndex}00vw`
+        : `-${this.slideIndex}00vw`,
+      "transition-property": !this.state.panOffset ? "left" : "none"
     };
   }
 
@@ -88,11 +89,7 @@ class Carousel extends Component {
               NEXT
             </Link>
           )}
-          {this.slides.map(s => (
-            <Slide key={s.name}>
-              {s.template}
-            </Slide>
-          ))}
+          {this.slides.map(s => <Slide key={s.name}>{s.template}</Slide>)}
         </main>
       </Hammer>
     ) : (
