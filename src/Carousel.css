@@ -8,11 +8,6 @@
   transition-timing-function: ease-out;
 }
 
-.s1 {}
-.s2 {}
-.s3 {}
-.s4 {}
-
 .prev,
 .next {
   position: fixed;

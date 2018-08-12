@@ -3,15 +3,11 @@ import { Redirect } from "react-router";
 import { Link } from "react-router-dom";
 import "./Carousel.css";
 import Slide from "./Slide";
+import model from "./Model";
 import Hammer from "react-hammerjs";
 
 class Carousel extends Component {
-  slides = [
-    { name: "who" },
-    { name: "what" },
-    { name: "love" },
-    { name: "when" }
-  ];
+  slides = model;
   home = this.slides[0] && this.slides[0].name;
   state = { panOffset: 0 };
   panPercentageBreak = 25;
@@ -92,7 +88,11 @@ class Carousel extends Component {
               NEXT
             </Link>
           )}
-          {this.slides.map(s => <Slide key={s.name} name={s.name} />)}
+          {this.slides.map(s => (
+            <Slide key={s.name}>
+              {s.template}
+            </Slide>
+          ))}
         </main>
       </Hammer>
     ) : (
