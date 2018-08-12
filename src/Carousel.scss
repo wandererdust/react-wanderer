@@ -1,3 +1,7 @@
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins/breakpoints";
+
 .carousel {
   position: absolute;
   width: 400vw;
@@ -5,6 +9,34 @@
   display: flex;
   transition-duration: 600ms;
   transition-timing-function: ease-out;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url("./assets/media/planet_h_576.jpg");
+
+  @media (orientation: portrait) {
+    background-image: url("./assets/media/planet_v_320.jpg");
+  }
+  @media (min-width: 320px) and (orientation: portrait) {
+    background-image: url("./assets/media/planet_v_576.jpg");
+  }
+  @include media-breakpoint-up(sm) {
+    background-image: url("./assets/media/planet_h_768.jpg");
+    @media (orientation: portrait) {
+      background-image: url("./assets/media/planet_v_768.jpg");
+    }
+  }
+  @include media-breakpoint-up(md) {
+    background-image: url("./assets/media/planet_h_992.jpg");
+  }
+  @include media-breakpoint-up(lg) {
+    background-image: url("./assets/media/planet_h_1200.jpg");
+  }
+  @include media-breakpoint-up(xl) {
+    background-image: url("./assets/media/planet_h_1500.jpg");
+  }
+  @media (min-width: 1500px) {
+    background-image: url("./assets/media/planet_h_1900.jpg");
+  }
 }
 
 .prev,
