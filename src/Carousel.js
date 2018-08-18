@@ -12,6 +12,40 @@ class Carousel extends Component {
   state = { panOffset: 0 };
   panPercentageBreak = 25;
 
+  constructor(props) {
+    super(props);
+    window.addEventListener("keydown", this.handleWindowKeyDown, true);
+  }
+
+  handleWindowKeyDown = event => {
+    if (event.defaultPrevented) {
+      return;
+    }
+    let key;
+
+    if (event.key !== undefined) {
+      key = event.key;
+    } else if (event.keyIdentifier !== undefined) {
+      key = event.keyIdentifier;
+    } else if (event.keyCode !== undefined) {
+      key = event.keyCode;
+    }
+
+    this.handleKeyAction(key);
+
+    event.preventDefault();
+  };
+
+  handleKeyAction = key =>
+    (["ArrowLeft", 37].includes(key) && this.handleLeftArrow()) ||
+    (["ArrowRight", 39].includes(key) && this.handleRightArrow());
+
+  handleLeftArrow = () =>
+    this.prevSlide && this.props.history.push(this.prevSlideLink);
+
+  handleRightArrow = () =>
+    this.nextSlide && this.props.history.push(this.nextSlideLink);
+
   get slideIndex() {
     return this.slides.findIndex(s => s.name === this.props.match.params.slide);
   }
@@ -41,7 +75,7 @@ class Carousel extends Component {
       left: this.state.panOffset
         ? `${this.initialOffset + this.state.panOffset}px`
         : `-${this.slideIndex}00vw`,
-      "transition-property": !this.state.panOffset ? "left" : "none"
+      transitionProperty: !this.state.panOffset ? "left" : "none"
     };
   }
 
