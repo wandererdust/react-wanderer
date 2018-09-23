@@ -1,4 +1,4 @@
-import * as content from "./Slides";
+import * as content from "./slides";
 
 const slides = [
   {

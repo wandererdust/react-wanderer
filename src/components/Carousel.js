@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router";
 import { Link } from "react-router-dom";
-import "./Carousel.scss";
 import Slide from "./Slide";
-import model from "./Model";
+import model from "../Model";
 import Hammer from "react-hammerjs";
 
 class Carousel extends Component {
